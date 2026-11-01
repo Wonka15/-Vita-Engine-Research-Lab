@@ -1,17 +1,17 @@
 # Reference Engines: Killzone: Mercenary and OpenStrike
 
 **Status:** Research and implementation guide  
-**Project:** Halo3DVita  
+**Project:** Vita Engine Research Lab  
 **Purpose:** Learn from two complementary PS Vita references while building an original, reusable engine.
 
 > **Engineering principle:** Study the best. Respect the creators. Build our own technology. Prove everything on the hardware.
 
-This document defines two major reference tracks for Halo3DVita:
+This document defines two major reference tracks for Vita Engine Research Lab:
 
 1. **Killzone: Mercenary** is the visual and performance reference: an example of an ambitious, high-fidelity PS Vita game.
 2. **OpenStrike** is the inspectable engineering reference: an open-source project with a native PS Vita target and a multi-platform architecture.
 
-Neither project is a codebase to copy wholesale. Halo3DVita remains an independent engine with its own architecture, original code, original test assets, and separately documented design decisions.
+Neither project is a codebase to copy wholesale. Vita Engine Research Lab remains an independent engine with its own architecture, original code, original test assets, and separately documented design decisions.
 
 ---
 
@@ -21,7 +21,7 @@ Neither project is a codebase to copy wholesale. Halo3DVita remains an independe
 |---|---|---|
 | Killzone: Mercenary | Visual quality, rendering features, asset optimisation, level visibility, performance trade-offs | Original rendering experiments and benchmark scenes |
 | OpenStrike | Vita platform integration, GXM host, build and packaging workflow, resource lifecycle, simulation/render separation, automated tests | Independent platform layer, renderer, asset pipeline and test harness |
-| Halo3DVita | Our own design and measured results | A reusable engine for original projects |
+| Vita Engine Research Lab | Our own design and measured results | A reusable engine for original projects |
 
 The two references should inform different questions. Killzone helps us ask **what visual results are worth pursuing?** OpenStrike helps us ask **how can a native Vita application be structured, built, tested and maintained?**
 
@@ -89,11 +89,11 @@ Repository: https://github.com/pocket-nexus/open-strike
 
 OpenStrike's repository describes a multi-platform FPS project with a native PS Vita VPK target. Its README documents a shared Rust simulation, a Pocket3D rendering layer, a PocketJS/QuickJS guest for game rules and HUD, and platform-specific hosts. Its Vita README describes a 960×544 native framebuffer, a 480×272 logical UI viewport rendered at 2× density, a 60 Hz simulation with interpolation, Vita3K end-to-end tests and optional wired development tooling.
 
-These are descriptions in the upstream repository. Halo3DVita should verify current implementation details against the upstream source and current revisions before relying on them.
+These are descriptions in the upstream repository. Vita Engine Research Lab should verify current implementation details against the upstream source and current revisions before relying on them.
 
 ### 3.1 Areas worth studying
 
-| OpenStrike area | Why it matters | Halo3DVita investigation |
+| OpenStrike area | Why it matters | Research Lab investigation |
 |---|---|---|
 | Vita host and GXM integration | Real native graphics API integration | Trace startup, display setup, frame loop, command submission and shutdown |
 | Platform-specific crate | Separates Vita-specific code from shared systems | Define a narrow platform interface rather than spreading Vita calls through engine code |
@@ -124,7 +124,7 @@ Do not copy files or code during this research pass. First produce notes describ
 - OpenStrike's existence does not establish that its dependencies are all MIT-licensed.
 - The root OpenStrike LICENSE does not automatically relicense submodules, vendored projects, assets, maps, fonts, libraries or generated content.
 - A successful Vita3K test is not proof of performance or correctness on physical hardware.
-- An implementation detail that works for OpenStrike's runtime may not fit Halo3DVita's architecture or goals.
+- An implementation detail that works for OpenStrike's runtime may not fit the Research Lab's architecture or goals.
 - A rendering library's license and redistribution conditions must be checked independently before linking or distributing it.
 
 ---
@@ -139,7 +139,7 @@ The OpenStrike repository's root LICENSE file identifies the project as MIT lice
 
 However, OpenStrike's README identifies a vendored PocketJS submodule, and its Vita documentation refers to Pocket3D licensing requirements. Submodules and third-party dependencies retain their own licensing terms. The root MIT license must not be treated as blanket permission to copy or redistribute every component in the repository.
 
-**Halo3DVita policy:**
+**Research Lab policy:**
 
 - Prefer learning from architecture and independently implementing the idea.
 - Do not copy code merely because the top-level repository says MIT.
@@ -153,7 +153,7 @@ However, OpenStrike's README identifies a vendored PocketJS submodule, and its V
 
 Killzone, its engine, game assets, characters, levels, audio, trademarks and proprietary development tools belong to their respective rights holders.
 
-**Halo3DVita policy:**
+**Research Lab policy:**
 
 - Use public interviews, articles and presentations as research references.
 - Do not copy proprietary source code, shaders, tools, extracted assets, textures, maps, models, audio or game data.
@@ -180,7 +180,7 @@ This is an engineering checklist, not legal advice. If a proposed reuse has uncl
 
 ---
 
-## 5. Halo3DVita implementation strategy
+## 5. Vita Engine Research Lab implementation strategy
 
 ### Track A — platform foundation
 
@@ -312,7 +312,7 @@ Keep test scenes, settings and capture paths version-controlled. A benchmark rep
 
 ## 9. Project commitment
 
-Halo3DVita will learn from the visual ambition of Killzone: Mercenary and the inspectable engineering practices of OpenStrike while remaining an original, reusable engine.
+Vita Engine Research Lab will learn from the visual ambition of Killzone: Mercenary and the inspectable engineering practices of OpenStrike while remaining an original, reusable engine.
 
 **We will not claim performance we have not measured, reuse code without checking its license, or use proprietary game content as development material.**
 
