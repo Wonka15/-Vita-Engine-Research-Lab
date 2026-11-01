@@ -1,68 +1,60 @@
 # Roadmap
 
-This roadmap is deliberately milestone-based. A milestone is complete only when its result builds, runs, and has reproducible evidence.
+A milestone is complete only when its acceptance evidence exists. A source file alone does not mean the feature has been built or tested.
 
-## M0 — Repository and toolchain
+## M0 — First Light: native Vita graphics proof
 
-- [ ] Confirm repository structure and contribution conventions.
-- [ ] Install a supported VitaSDK release.
-- [ ] Build and run the official hello-world sample.
-- [ ] Record host OS, SDK version, Vita firmware/homebrew environment, and build instructions.
+- [x] Add a minimal native Vita application source prototype.
+- [x] Add a rotating mesh and on-screen FPS/frame-time instrumentation source.
+- [x] Define one repeatable baseline scene and results template.
+- [ ] Build the VPK with the documented VitaSDK/vitaGL toolchain.
+- [ ] Launch and verify clean exit on a physical PCH-1000.
+- [ ] Launch and verify clean exit on a physical PCH-2000.
+- [ ] Capture photo/video evidence from both models.
+- [ ] Record separate frame-time and memory results for both models.
 
-## M1 — First graphics proof of concept
+**Acceptance:** a buildable VPK, a visible rotating mesh and updating timing overlay, plus a reproducible physical-hardware result for each model. Do not mark M0 complete based on Vita3K alone.
 
-- [ ] Create a minimal Vita application.
-- [ ] Initialize the display and graphics system.
-- [ ] Clear the screen and present frames reliably.
-- [ ] Draw a single indexed 3D mesh.
-- [ ] Add a camera and basic input.
-- [ ] Measure frame time and verify behavior on hardware or a clearly identified emulator.
+## M1 — Backend comparison and renderer foundation
 
-## M2 — Renderer foundation
+- [ ] Keep the same First Light scene as the comparison workload.
+- [ ] Build a direct-SceGxm proof of concept.
+- [ ] Compare direct GXM with vitaGL under identical conditions.
+- [ ] Record CPU frame time, GPU time or a labelled proxy, memory pools and frame-time distribution.
+- [ ] Choose the initial backend based on evidence and maintainability.
+- [ ] Define vertex, index, mesh, camera and transform interfaces.
 
-- [ ] Define vertex, index, mesh, texture, and material representations.
-- [ ] Add transform and camera math.
-- [ ] Add depth testing and basic texture sampling.
-- [ ] Separate platform code from renderer code.
-- [ ] Add a repeatable test scene.
+## M2 — Native engine foundation
+
+- [ ] Separate platform lifecycle, input, timing and display services.
+- [ ] Add a backend-neutral render interface.
+- [ ] Add depth-tested mesh submission and basic texture sampling.
+- [ ] Add deterministic scene loading and a repeatable test harness.
+- [ ] Keep PCH-1000 and PCH-2000 in the hardware test matrix.
 
 ## M3 — Asset pipeline and diagnostics
 
-- [ ] Choose simple documented runtime asset formats.
+- [ ] Choose documented runtime asset formats.
 - [ ] Add host-side validation/conversion tools.
-- [ ] Track memory usage and resource lifetime.
-- [ ] Add frame timing, draw-call, and allocation diagnostics.
+- [ ] Track main RAM and VRAM allocations separately.
+- [ ] Add frame-time percentiles, draw-call and allocation diagnostics.
+- [ ] Add automated build checks where the toolchain is available.
 
 ## M4 — Visual feature experiments
 
 - [ ] Compare simple lighting models.
 - [ ] Test normal mapping and material variants.
-- [ ] Evaluate fog, transparency, and environment rendering.
-- [ ] Prototype shadow and reflection techniques only after baseline performance is known.
-- [ ] Document visual quality and measured costs.
+- [ ] Evaluate fog, transparency and environment rendering.
+- [ ] Prototype shadows/reflections only after baseline performance is understood.
+- [ ] Document visual quality and measured costs on real hardware.
 
 ## M5 — Reusable engine
 
 - [ ] Stabilize public engine interfaces.
-- [ ] Add an example project that uses no Halo assets.
+- [ ] Add an original sample project with no third-party game assets.
 - [ ] Document how to add a renderer feature or platform service.
 - [ ] Publish known limitations and benchmark methodology.
 
 ## Acceptance rule
 
 No feature is called supported until it has a buildable implementation, a test or sample, documented limitations, and measured results where performance matters.
-
-
-## M6 — Performance scaling and frame timing
-
-- [ ] Add CPU timing scopes for simulation, scene preparation, and render submission.
-- [ ] Add GPU timing or the best available platform-appropriate approximation.
-- [ ] Record draw calls, triangles, render passes, active resolution, and memory use.
-- [ ] Establish fixed-resolution baseline results on physical Vita hardware.
-- [ ] Add independent controls for lights, shadows, particles, and object update frequency.
-- [ ] Implement named quality profiles over those independent controls.
-- [ ] Test dynamic resolution only after GPU bottleneck detection is reliable.
-- [ ] Separate simulation timing from presentation timing.
-- [ ] Evaluate background workers only where profiling demonstrates a benefit.
-
-See [Vita Performance Scaling and Rendering Profiles](VITA_PERFORMANCE_SCALING.md) for the research basis and validation methodology.
