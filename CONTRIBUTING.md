@@ -36,4 +36,11 @@ When testing on a Vita, include:
 
 ## Good first contributions
 
-Look for issues labelled `good first issue`. Useful starter work includes build documentation, device test reports, benchmark tooling, and small isolated rendering experiments.
+Start with the open issues labelled `good first issue`:
+
+- [Test First Light on PCH-1000](https://github.com/Wonka15/-Vita-Engine-Research-Lab/issues/1)
+- [Test First Light on PCH-2000](https://github.com/Wonka15/-Vita-Engine-Research-Lab/issues/2)
+- [Prototype a direct GXM comparison](https://github.com/Wonka15/-Vita-Engine-Research-Lab/issues/3)
+- [Add main RAM / VRAM diagnostics](https://github.com/Wonka15/-Vita-Engine-Research-Lab/issues/4)
+
+More good-first tasks can be added as the hardware baseline becomes stable.
