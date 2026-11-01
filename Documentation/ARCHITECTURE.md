@@ -2,7 +2,7 @@
 
 ## Design target
 
-Halo3DVita is a reusable 3D engine for PlayStation Vita. The design separates platform services, graphics backends, renderer systems, and content tools so that experiments do not lock the project into one game or one rendering API.
+Vita Engine Research Lab is a reusable 3D engine for PlayStation Vita. The design separates platform services, graphics backends, renderer systems, and content tools so that experiments do not lock the project into one game or one rendering API.
 
 ## Proposed layers
 
@@ -38,3 +38,18 @@ Treat CPU memory, GPU-visible allocations, texture storage, render targets, and 
 ## Content boundary
 
 Game-specific formats, if ever investigated, belong in optional import adapters or research documentation. The core engine must not depend on proprietary Halo code or bundled game assets.
+
+
+## Performance scaling architecture
+
+Performance controls must respond to the workload that is actually limiting the frame.
+
+- **GPU controls:** render scale, render-pass count, shadow work, particle density, overdraw, and material complexity.
+- **CPU controls:** simulation frequency, AI update cadence, scene traversal, animation work, command preparation, and background tasks.
+- **Presentation controls:** frame pacing, display cadence, and optional interpolation, kept separate from simulation timing.
+
+Quality profiles should be named presets over independent settings. A profile must remain inspectable and individually overridable; changing one setting should not obscure the rest of the configuration.
+
+Dynamic resolution should react to measured GPU pressure, not to CPU bottlenecks. Keep a fixed-resolution mode for repeatable benchmarks. Add adaptive behavior only after timing instrumentation is reliable.
+
+See [Vita Performance Scaling and Rendering Profiles](VITA_PERFORMANCE_SCALING.md) for the detailed reference study and proposed implementation sequence.
