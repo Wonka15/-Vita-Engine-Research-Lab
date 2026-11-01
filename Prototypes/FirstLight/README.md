@@ -35,11 +35,11 @@ From this directory, in the VitaSDK shell / WSL2 environment:
 ```sh
 export VITASDK=/usr/local/vitasdk
 export PATH="$VITASDK/bin:$PATH"
-make clean
-make
+cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE="$VITASDK/share/vita.toolchain.cmake"
+cmake --build build --parallel
 ```
 
-Expected output: `first_light.vpk`.
+Expected output: `build/first_light.vpk`. A legacy Makefile is also included, but CMake is the documented primary path.
 
 If the linker cannot find `-lvitaGL`, confirm vitaGL was installed into the active VitaSDK prefix and that the SDK and vitaGL were built for the same toolchain.
 
