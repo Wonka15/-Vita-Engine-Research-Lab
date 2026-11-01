@@ -40,7 +40,7 @@ Halo: Combat Evolved, Halo 2, Halo 3, Halo 3: ODST, and Halo: Reach are part of 
 
 ## Research library and browser lab
 
-Browse the [Vita Engine Research Lab Technical Reference Library](https://wonka15.github.io/Halo3DVita/references.html) for categorized commercial game studies, Vita graphics APIs, open-source engineering projects, discovery directories, validation methodology and licensing notes. The [Browser Graphics Lab](https://wonka15.github.io/Halo3DVita/) is the interactive companion prototype; it is not a Vita emulator or hardware benchmark.
+Browse the [Vita Engine Research Lab Technical Reference Library](https://wonka15.github.io/Halo3DVita/references.html) for categorized commercial game studies, Vita graphics APIs, open-source engineering projects, performance architecture, validation methodology and licensing notes. The [Vita Performance Scaling Guide](Documentation/VITA_PERFORMANCE_SCALING.md) explains CPU/GPU bottlenecks, quality profiles, dynamic resolution, frame pacing and background work. The [Browser Graphics Lab](https://wonka15.github.io/Halo3DVita/) is the interactive companion prototype; it is not a Vita emulator or hardware benchmark.
 
 See the [Bungie Blam! Engine Lineage](Documentation/BLAM_ENGINE_LINEAGE.md) and the full [PS Vita Technical References](Documentation/PSVITA_TECHNICAL_REFERENCES.md) research document for source links, technical questions and the recommended reading order.
 
