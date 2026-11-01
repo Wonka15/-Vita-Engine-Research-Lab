@@ -38,6 +38,12 @@ The project pursues three goals:
 
 Halo: Combat Evolved, Halo 2, and Halo 3 may be used as visual and technical research references for studying different rendering approaches. They are not separate game-port targets in this repository. The engine should remain game-agnostic.
 
+## Research library and browser lab
+
+Browse the [PS Vita Technical Reference Library](https://wonka15.github.io/Halo3DVita/references.html) for categorized commercial game studies, Vita graphics APIs, open-source engineering projects, discovery directories, validation methodology and licensing notes. The [Browser Graphics Lab](https://wonka15.github.io/Halo3DVita/) is the interactive companion prototype; it is not a Vita emulator or hardware benchmark.
+
+See the full [PS Vita Technical References](Documentation/PSVITA_TECHNICAL_REFERENCES.md) research document for source links, technical questions and the recommended reading order.
+
 ## Major reference-engine studies
 
 The project has two complementary technical reference tracks:
