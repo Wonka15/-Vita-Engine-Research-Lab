@@ -1,8 +1,8 @@
-# Halo3DVita
+# Vita Engine Research Lab
 
 **An independent, reusable 3D graphics engine project for PlayStation Vita.**
 
-Halo3DVita is a hardware-first research and development project exploring how far the PlayStation Vita can be pushed as a 3D graphics platform. Halo is one of the project's visual research references, but the engine is intended to support original scenes, tools, experiments, and potentially many kinds of games.
+Vita Engine Research Lab is a hardware-first research and development project exploring how far the PlayStation Vita can be pushed as a 3D graphics platform. Halo is one of the project's visual research references, but the engine is intended to support original scenes, tools, experiments, and potentially many kinds of games.
 
 ## Vision
 
@@ -40,7 +40,7 @@ Halo: Combat Evolved, Halo 2, and Halo 3 may be used as visual and technical res
 
 ## Research library and browser lab
 
-Browse the [PS Vita Technical Reference Library](https://wonka15.github.io/Halo3DVita/references.html) for categorized commercial game studies, Vita graphics APIs, open-source engineering projects, discovery directories, validation methodology and licensing notes. The [Browser Graphics Lab](https://wonka15.github.io/Halo3DVita/) is the interactive companion prototype; it is not a Vita emulator or hardware benchmark.
+Browse the [Vita Engine Research Lab Technical Reference Library](https://wonka15.github.io/Halo3DVita/references.html) for categorized commercial game studies, Vita graphics APIs, open-source engineering projects, discovery directories, validation methodology and licensing notes. The [Browser Graphics Lab](https://wonka15.github.io/Halo3DVita/) is the interactive companion prototype; it is not a Vita emulator or hardware benchmark.
 
 See the full [PS Vita Technical References](Documentation/PSVITA_TECHNICAL_REFERENCES.md) research document for source links, technical questions and the recommended reading order.
 
@@ -51,7 +51,7 @@ The project has two complementary technical reference tracks:
 - **Killzone: Mercenary:** visual and performance research into ambitious PS Vita rendering, asset optimisation, lighting, reflections, particles, visibility and level design. Research is based on public developer interviews and articles only.
 - **OpenStrike:** engineering research into a native Vita application, GXM integration, platform separation, build tooling, resource lifecycle and automated testing. Its code and dependencies are subject to their own licenses; no code is reused without a file- and revision-specific license review.
 
-These are references, not code or asset sources to copy wholesale. Halo3DVita will implement original systems and validate performance on physical Vita hardware.
+These are references, not code or asset sources to copy wholesale. The project will implement original systems and validate performance on physical Vita hardware.
 
 See [Reference Engines: Killzone: Mercenary and OpenStrike](Documentation/REFERENCE_ENGINES.md) for the research plan, licensing boundaries, benchmark suite and milestones.
 
