@@ -51,3 +51,18 @@ This roadmap is deliberately milestone-based. A milestone is complete only when 
 ## Acceptance rule
 
 No feature is called supported until it has a buildable implementation, a test or sample, documented limitations, and measured results where performance matters.
+
+
+## M6 — Performance scaling and frame timing
+
+- [ ] Add CPU timing scopes for simulation, scene preparation, and render submission.
+- [ ] Add GPU timing or the best available platform-appropriate approximation.
+- [ ] Record draw calls, triangles, render passes, active resolution, and memory use.
+- [ ] Establish fixed-resolution baseline results on physical Vita hardware.
+- [ ] Add independent controls for lights, shadows, particles, and object update frequency.
+- [ ] Implement named quality profiles over those independent controls.
+- [ ] Test dynamic resolution only after GPU bottleneck detection is reliable.
+- [ ] Separate simulation timing from presentation timing.
+- [ ] Evaluate background workers only where profiling demonstrates a benefit.
+
+See [Vita Performance Scaling and Rendering Profiles](VITA_PERFORMANCE_SCALING.md) for the research basis and validation methodology.
