@@ -109,8 +109,8 @@ static void draw_hud(float fps, float frame_ms) {
     /* Dark translucent HUD plate. */
     glColor4f(0.015f, 0.035f, 0.065f, 0.88f);
     glBegin(GL_QUADS);
-    glVertex2f(18, 18); glVertex2f(300, 18);
-    glVertex2f(300, 76); glVertex2f(18, 76);
+    glVertex2f(18, 18); glVertex2f(470, 18);
+    glVertex2f(470, 76); glVertex2f(18, 76);
     glEnd();
 
     glColor3f(0.78f, 0.92f, 1.0f);
