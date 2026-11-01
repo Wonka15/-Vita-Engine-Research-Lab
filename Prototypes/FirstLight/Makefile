@@ -8,7 +8,7 @@ CFLAGS   := -O2 -Wall -Wextra -std=gnu11 -ffast-math
 LDFLAGS  := -Wl,-q
 LIBS     := -lvitaGL -lstdc++ -lc -lm -lmathneon \
             -lSceGxm_stub -lSceDisplay_stub -lSceAppMgr_stub \
-            -lSceCtrl_stub -lSceKernel_stub -lSceCommonDialog_stub \
+            -lSceCtrl_stub -lSceLibKernel_stub -lSceCommonDialog_stub \
             -lvitashark -lSceShaccCgExt -ltaihen_stub \
             -lSceShaccCg_stub -lSceKernelDmacMgr_stub
 
