@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080d18">
+<title>Halo3DVita — Browser Graphics Lab</title>
+<style>
+:root{color-scheme:dark;--bg:#080d18;--panel:#111a2a;--line:#25344c;--muted:#9aabc2;--text:#edf4ff;--accent:#8dd7ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#1a3550 0,transparent 55%),var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:1100px;margin:auto;padding:22px 18px 40px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:750}.status{border:1px solid #285b54;color:#a8f0d2;border-radius:99px;padding:5px 10px;font-size:11px}
+h1{font-size:clamp(27px,5vw,46px);letter-spacing:-.04em;line-height:1.05;margin:24px 0 10px}p{color:var(--muted);max-width:720px;margin:0 0 20px}
+.stage{position:relative;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:linear-gradient(145deg,#101d30,#080d18);box-shadow:0 24px 80px #0008;min-height:300px}
+canvas{display:block;width:100%;height:min(62vw,520px);min-height:300px;touch-action:none;outline:none}
+.overlay{position:absolute;left:14px;top:14px;display:flex;gap:7px;flex-wrap:wrap;pointer-events:none}.pill{background:#08111dcc;border:1px solid #31445e;border-radius:8px;padding:6px 9px;font-size:11px;color:#dcecff;backdrop-filter:blur(10px)}
+.hint{position:absolute;right:14px;bottom:14px;background:#08111dcc;border:1px solid #31445e;border-radius:8px;padding:7px 10px;color:#b8c9df;font-size:11px;pointer-events:none}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-top:14px}.panel{border:1px solid var(--line);border-radius:16px;background:#101827;padding:16px}.panel h2{font-size:13px;text-transform:uppercase;letter-spacing:.12em;margin:0 0 14px;color:#c5d7ee}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}.control{background:#0b1321;border:1px solid #1d2a40;border-radius:11px;padding:11px}.control label{display:flex;justify-content:space-between;gap:8px;color:#cbd8e8;font-size:12px;margin-bottom:8px}.control input{width:100%;accent-color:#8dd7ff}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+button{border:1px solid #344861;border-radius:10px;background:#17263a;color:#eaf4ff;padding:9px 12px;font:inherit;font-size:12px}button:active{transform:translateY(1px)}button[aria-pressed=true]{border-color:#80cfff;background:#17374b}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.metric{background:#0b1321;border:1px solid #1d2a40;border-radius:11px;padding:11px}.metric strong{display:block;font-size:22px;font-variant-numeric:tabular-nums}.metric span{color:var(--muted);font-size:11px}
+.note{font-size:12px;color:#93a7c0;margin-top:14px}.foot{margin-top:20px;color:#70839d;font-size:11px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}main{padding:18px 12px 32px}}
+@media(max-width:390px){.controls{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"}}
+</script>
+</head>
+<body>
+<main>
+  <div class="top"><div class="brand">Halo3DVita / Engine Lab</div><div class="status" id="status">Starting WebGL…</div></div>
+  <h1>Graphics test laboratory</h1>
+  <p>A browser-based visual sandbox for experimenting with 3D scenes, lighting, materials and performance instrumentation. This is a companion prototype—not a Vita emulator or a measurement of Vita hardware performance.</p>
+  <section class="stage" aria-label="Interactive 3D viewport">
+    <div class="overlay"><span class="pill">SCENE 001 · PRIMITIVE STUDY</span><span class="pill" id="mode">LIT MATERIAL</span></div>
+    <canvas id="view"></canvas>
+    <div class="hint">Drag to orbit · pinch or scroll to zoom</div>
+  </section>
+  <div class="grid">
+    <section class="panel">
+      <h2>Rendering controls</h2>
+      <div class="controls">
+        <div class="control"><label for="light">Light intensity <output id="lightVal">2.0</output></label><input id="light" type="range" min="0" max="4" step=".1" value="2"></div>
+        <div class="control"><label for="rough">Material roughness <output id="roughVal">0.35</output></label><input id="rough" type="range" min="0" max="1" step=".01" value=".35"></div>
+        <div class="control"><label for="metal">Metalness <output id="metalVal">0.65</output></label><input id="metal" type="range" min="0" max="1" step=".01" value=".65"></div>
+        <div class="control"><label for="speed">Rotation speed <output id="speedVal">1.0×</output></label><input id="speed" type="range" min="0" max="2" step=".05" value="1"></div>
+      </div>
+      <div class="buttons">
+        <button id="wire" aria-pressed="false">Wireframe</button>
+        <button id="rotate" aria-pressed="true">Pause rotation</button>
+        <button id="reset">Reset view</button>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Browser diagnostics</h2>
+      <div class="metrics">
+        <div class="metric"><strong id="fps">—</strong><span>Browser FPS</span></div>
+        <div class="metric"><strong id="calls">—</strong><span>Draw calls</span></div>
+        <div class="metric"><strong id="tris">—</strong><span>Triangles</span></div>
+        <div class="metric"><strong id="size">—</strong><span>Viewport pixels</span></div>
+      </div>
+      <div class="note">Metrics describe this browser and device only. They cannot be compared directly with Vita3K or a physical PS Vita.</div>
+    </section>
+  </div>
+  <div class="foot">Halo3DVita · Experimental browser companion · No game assets included</div>
+</main>
+<script type="module">
+import * as THREE from 'three';
+const canvas=document.querySelector('#view'),status=document.querySelector('#status');
+let renderer,scene,camera,mesh,wire=false,spinning=true,drag=false,lastX=0,lastY=0,theta=.65,phi=1.12,radius=5.2,frames=0,lastSample=performance.now();
+try{
+ renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
+ renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));
+ renderer.setSize(canvas.clientWidth,canvas.clientHeight,false);
+ renderer.outputColorSpace=THREE.SRGBColorSpace;
+ renderer.toneMapping=THREE.ACESFilmicToneMapping;
+ renderer.toneMappingExposure=1;
+ scene=new THREE.Scene();scene.background=new THREE.Color(0x091321);
+ camera=new THREE.PerspectiveCamera(45,canvas.clientWidth/canvas.clientHeight,.1,100);
+ const hemi=new THREE.HemisphereLight(0x9ccfff,0x17243a,1.1);scene.add(hemi);
+ const key=new THREE.DirectionalLight(0xe4f4ff,2);key.position.set(3,5,4);scene.add(key);
+ const fill=new THREE.PointLight(0x4b9dff,18,12);fill.position.set(-3,1,2);scene.add(fill);
+ const mat=new THREE.MeshStandardMaterial({color:0x83cfff,metalness:.65,roughness:.35});
+ mesh=new THREE.Mesh(new THREE.IcosahedronGeometry(1.25,2),mat);scene.add(mesh);
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(1.85,.018,8,100),new THREE.MeshBasicMaterial({color:0x4c83a8,transparent:true,opacity:.7}));ring.rotation.x=Math.PI/2.5;scene.add(ring);
+ const grid=new THREE.GridHelper(12,24,0x31506c,0x1a2b40);grid.position.y=-1.55;scene.add(grid);
+ const floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:0x0b1422,roughness:1}));floor.rotation.x=-Math.PI/2;floor.position.y=-1.57;scene.add(floor);
+ function updateCamera(){phi=Math.max(.18,Math.min(Math.PI-.18,phi));camera.position.set(radius*Math.sin(phi)*Math.sin(theta),radius*Math.cos(phi),radius*Math.sin(phi)*Math.cos(theta));camera.lookAt(0,0,0)}
+ updateCamera();
+ function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();document.querySelector('#size').textContent=Math.round(w*renderer.getPixelRatio())+'×'+Math.round(h*renderer.getPixelRatio())}
+ new ResizeObserver(resize).observe(canvas);
+ const $=id=>document.getElementById(id);
+ $('light').addEventListener('input',e=>{key.intensity=+e.target.value;$('lightVal').textContent=(+e.target.value).toFixed(1)});
+ $('rough').addEventListener('input',e=>{mat.roughness=+e.target.value;$('roughVal').textContent=(+e.target.value).toFixed(2)});
+ $('metal').addEventListener('input',e=>{mat.metalness=+e.target.value;$('metalVal').textContent=(+e.target.value).toFixed(2)});
+ $('speed').addEventListener('input',e=>$('speedVal').textContent=(+e.target.value).toFixed(2)+'×');
+ $('wire').onclick=()=>{wire=!wire;mat.wireframe=wire;$('wire').setAttribute('aria-pressed',String(wire));$('mode').textContent=wire?'WIREFRAME':'LIT MATERIAL'};
+ $('rotate').onclick=()=>{spinning=!spinning;$('rotate').textContent=spinning?'Pause rotation':'Resume rotation';$('rotate').setAttribute('aria-pressed',String(spinning))};
+ $('reset').onclick=()=>{theta=.65;phi=1.12;radius=5.2;updateCamera()};
+ canvas.addEventListener('pointerdown',e=>{drag=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId)});
+ canvas.addEventListener('pointermove',e=>{if(!drag)return;theta-=(e.clientX-lastX)*.008;phi-=(e.clientY-lastY)*.008;lastX=e.clientX;lastY=e.clientY;updateCamera()});
+ canvas.addEventListener('pointerup',()=>drag=false);canvas.addEventListener('pointercancel',()=>drag=false);
+ canvas.addEventListener('wheel',e=>{e.preventDefault();radius=Math.max(2.8,Math.min(10,radius+e.deltaY*.008));updateCamera()},{passive:false});
+ status.textContent='WebGL renderer ready';
+ function frame(now){requestAnimationFrame(frame);if(spinning)mesh.rotation.y+=.006*(+$('speed').value);mesh.rotation.x+=spinning?.0015*(+$('speed').value):0;ring.rotation.z+=.0007;renderer.render(scene,camera);frames++;if(now-lastSample>=1000){$('fps').textContent=Math.round(frames*1000/(now-lastSample));$('calls').textContent=renderer.info.render.calls;$('tris').textContent=renderer.info.render.triangles.toLocaleString();frames=0;lastSample=now}}
+ requestAnimationFrame(frame);
+}catch(err){status.textContent='WebGL unavailable';console.error(err);document.querySelector('.stage').insertAdjacentHTML('beforeend','<div style="padding:16px;color:#ffc7c7">This browser could not initialize WebGL. Try a recent Safari, Chrome, or Firefox version with hardware acceleration enabled.</div>')}
+</script>
+</body>
+</html>
