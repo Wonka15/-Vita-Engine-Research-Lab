@@ -1,0 +1,23 @@
+# VitaSDK / native build outputs
+build/
+cmake-build-*/
+*.o
+*.a
+*.elf
+*.velf
+*.self
+*.vpk
+param.sfo
+eboot.bin
+
+# Local SDK / console files (never commit firmware or keys)
+*.suprx
+*.skprx
+*.rif
+*.rap
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
