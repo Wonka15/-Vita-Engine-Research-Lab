@@ -42,7 +42,11 @@ These games show what teams achieved on Vita hardware. They are visual and produ
 - **What we should investigate:** art direction as a performance tool, fake/cheap reflections, selective detail, camera-aware visibility and consistent frame pacing.
 - **Caution:** PhyreEngine is proprietary, not an unrestricted open-source engine. Public information is research material, not a license to use Sony source, tools or assets. Treat specific Gravity Rush implementation claims as secondary-source reports unless independently verified.
 
-## 2. Native Vita graphics APIs and development foundations
+## 2. Bungie engine lineage research
+
+The [Blam! Engine Lineage](BLAM_ENGINE_LINEAGE.md) document tracks Halo: Combat Evolved, Halo 2, Halo 3, Halo 3: ODST and Halo: Reach, along with Bungie's internal Blam!-based experiments, the Reach-to-Tiger transition, later descendants and important distinctions such as Halo Wars' separate Phoenix engine. It is a historical architecture study, not a source or asset collection.
+
+## 3. Native Vita graphics APIs and development foundations
 
 ### VitaSDK — official community toolchain and API documentation
 
@@ -61,7 +65,7 @@ These games show what teams achieved on Vita hardware. They are visual and produ
 - **Use in our project:** Benchmark development speed, supported feature coverage and overhead against a small direct-GXM prototype.
 - **License warning:** The repository identifies GPL/LGPL licensing files. Review the exact library version, files and license obligations before linking, modifying or distributing it. Also account for its documented shader-compiler prerequisite. Do not assume the wrapper is a frictionless drop-in.
 
-## 3. Open-source and community Vita engineering projects
+## 4. Open-source and community Vita engineering projects
 
 These are inspectable engineering references. Inspect current source and licenses at the exact revision before borrowing anything.
 
@@ -93,7 +97,7 @@ These are inspectable engineering references. Inspect current source and license
 - **Study:** Framework adaptation, NEON optimisation, model update/render separation and resolution/antialiasing trade-offs.
 - **Scope warning:** Primarily a 2D/character animation reference, not a general 3D renderer. Check upstream project and component licenses.
 
-## 4. Community directories and further discovery
+## 5. Community directories and further discovery
 
 ### PS Vita Porting Wiki
 
@@ -107,7 +111,7 @@ These are inspectable engineering references. Inspect current source and license
 - **Use:** Find current and historical Vita ports, homebrew, wrappers and development projects.
 - **Caution:** Independently verify project activity, upstream source, provenance and license. A directory listing is not proof of quality or permission to reuse.
 
-## 5. How we will turn references into engineering decisions
+## 6. How we will turn references into engineering decisions
 
 Every useful reference should lead to a small, independent experiment:
 
@@ -132,7 +136,7 @@ Every useful reference should lead to a small, independent experiment:
 
 Never compare browser FPS directly with Vita FPS. Browser lab metrics are useful for interaction and visual iteration only. Vita3K is useful for launch/runtime regression tests. Physical Vita measurements are required for hardware claims.
 
-## 6. Licensing and intellectual-property policy
+## 7. Licensing and intellectual-property policy
 
 - Commercial game references are for learning from public information. Do not extract or commit proprietary source, shaders, tools, textures, models, maps, audio or other game data.
 - Open-source code is not automatically reusable merely because a project is public. Check the exact file, revision, license, submodules, dependencies and required notices.
@@ -140,7 +144,7 @@ Never compare browser FPS directly with Vita FPS. Browser lab metrics are useful
 - The repository's MIT license applies only to original project material that the repository authors have rights to license. It does not relicense third-party work or grant rights to game IP.
 - Prefer independent implementations of useful ideas. When code reuse is genuinely needed, preserve all required notices and document the decision.
 
-## 7. Recommended reading order
+## 8. Recommended reading order
 
 1. Read the [Uncharted: Golden Abyss postmortem](https://www.gamedeveloper.com/design/postmortem-sony-bend-studio-s-i-uncharted-golden-abyss-i-) for detailed Vita production and rendering trade-offs.
 2. Read [VitaSDK getting started](https://vitasdk.org/) and build a clean sample.
@@ -149,7 +153,7 @@ Never compare browser FPS directly with Vita FPS. Browser lab metrics are useful
 5. Study [OpenStrike](https://github.com/pocket-nexus/open-strike) for its native app workflow and tests.
 6. Use Killzone, WipEout and Gravity Rush as visual case studies; convert each desired effect into a measurable original test.
 
-## 8. Relationship to the rest of this repository
+## 9. Relationship to the rest of this repository
 
 - [Architecture](ARCHITECTURE.md)
 - [Roadmap](ROADMAP.md)
