@@ -36,13 +36,13 @@ The project pursues three goals:
 
 ## Graphics research references
 
-Halo: Combat Evolved, Halo 2, and Halo 3 may be used as visual and technical research references for studying different rendering approaches. They are not separate game-port targets in this repository. The engine should remain game-agnostic.
+Halo: Combat Evolved, Halo 2, Halo 3, Halo 3: ODST, and Halo: Reach are part of the Bungie Blam! lineage we study for engine evolution. ODST is a strong example of extending an existing engine; Reach is a key transition toward Bungie's later Tiger technology. These are research references, not separate game-port targets. See the [Blam! Engine Lineage](Documentation/BLAM_ENGINE_LINEAGE.md) timeline for the full history, including internal prototypes, related uses and later descendants. The engine should remain game-agnostic.
 
 ## Research library and browser lab
 
 Browse the [Vita Engine Research Lab Technical Reference Library](https://wonka15.github.io/Halo3DVita/references.html) for categorized commercial game studies, Vita graphics APIs, open-source engineering projects, discovery directories, validation methodology and licensing notes. The [Browser Graphics Lab](https://wonka15.github.io/Halo3DVita/) is the interactive companion prototype; it is not a Vita emulator or hardware benchmark.
 
-See the full [PS Vita Technical References](Documentation/PSVITA_TECHNICAL_REFERENCES.md) research document for source links, technical questions and the recommended reading order.
+See the [Bungie Blam! Engine Lineage](Documentation/BLAM_ENGINE_LINEAGE.md) and the full [PS Vita Technical References](Documentation/PSVITA_TECHNICAL_REFERENCES.md) research document for source links, technical questions and the recommended reading order.
 
 ## Major reference-engine studies
 
