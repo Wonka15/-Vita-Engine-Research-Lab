@@ -43,11 +43,11 @@ The first 3D mesh uses vitaGL, a GXM-backed OpenGL subset. Build/install vitaGL 
 
 ```sh
 cd Prototypes/FirstLight
-make clean
-make
+cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE="$VITASDK/share/vita.toolchain.cmake"
+cmake --build build --parallel
 ```
 
-The output should be `first_light.vpk`. This step has not yet been verified in this repository's CI or on the owner's consoles; report any compiler/linker issue with the full error and SDK/library versions.
+The output should be `build/first_light.vpk`. This step has not yet been verified in this repository's CI or on the owner's consoles; report any compiler/linker issue with the full error and SDK/library versions.
 
 **vitaGL runtime requirement:** its upstream documentation requires the console's `libshacccg.suprx` shader compiler module. Follow the upstream extraction instructions on your own console. Do not download or share firmware modules, keys, or decrypted system files.
 
