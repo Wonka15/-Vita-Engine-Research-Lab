@@ -38,6 +38,17 @@ The project pursues three goals:
 
 Halo: Combat Evolved, Halo 2, and Halo 3 may be used as visual and technical research references for studying different rendering approaches. They are not separate game-port targets in this repository. The engine should remain game-agnostic.
 
+## Major reference-engine studies
+
+The project has two complementary technical reference tracks:
+
+- **Killzone: Mercenary:** visual and performance research into ambitious PS Vita rendering, asset optimisation, lighting, reflections, particles, visibility and level design. Research is based on public developer interviews and articles only.
+- **OpenStrike:** engineering research into a native Vita application, GXM integration, platform separation, build tooling, resource lifecycle and automated testing. Its code and dependencies are subject to their own licenses; no code is reused without a file- and revision-specific license review.
+
+These are references, not code or asset sources to copy wholesale. Halo3DVita will implement original systems and validate performance on physical Vita hardware.
+
+See [Reference Engines: Killzone: Mercenary and OpenStrike](Documentation/REFERENCE_ENGINES.md) for the research plan, licensing boundaries, benchmark suite and milestones.
+
 ## Initial technical direction
 
 - **Primary toolchain:** [VitaSDK](https://vitasdk.org/)
