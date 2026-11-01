@@ -1,6 +1,6 @@
 # PS Vita Technical Reference Library
 
-**Purpose:** A categorized research directory for the Halo3DVita engine project.  
+**Purpose:** A categorized research directory for Vita Engine Research Lab.  
 **Status:** Curated starting points; verify current source revisions, build status and licenses before implementation or reuse.
 
 > Study the best. Respect the creators. Build our own technology. Prove everything on the hardware.
@@ -111,7 +111,7 @@ These are inspectable engineering references. Inspect current source and license
 
 Every useful reference should lead to a small, independent experiment:
 
-| Research area | First Halo3DVita experiment | Evidence to record |
+| Research area | First Research Lab experiment | Evidence to record |
 |---|---|---|
 | Geometry and visibility | Mesh-count and occlusion scene | Visible/submitted triangles, draw calls, frame time |
 | Materials and lighting | Small material gallery | Shader variants, CPU/GPU time, image captures |
@@ -137,7 +137,7 @@ Never compare browser FPS directly with Vita FPS. Browser lab metrics are useful
 - Commercial game references are for learning from public information. Do not extract or commit proprietary source, shaders, tools, textures, models, maps, audio or other game data.
 - Open-source code is not automatically reusable merely because a project is public. Check the exact file, revision, license, submodules, dependencies and required notices.
 - Keep a provenance record for every third-party component actually incorporated: origin URL, revision, author, license, modifications and obligations.
-- Halo3DVita's MIT license applies only to original project material that the repository authors have rights to license. It does not relicense third-party work or grant rights to game IP.
+- The repository's MIT license applies only to original project material that the repository authors have rights to license. It does not relicense third-party work or grant rights to game IP.
 - Prefer independent implementations of useful ideas. When code reuse is genuinely needed, preserve all required notices and document the decision.
 
 ## 7. Recommended reading order
