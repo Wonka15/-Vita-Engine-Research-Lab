@@ -156,6 +156,7 @@ int main(void) {
         previous_us = now_us;
         frame_ms = (float)delta_us / 1000.0f;
         rotation += (float)delta_us * 0.000045f;
+        if (rotation >= 360.0f) rotation -= 360.0f;
 
         ++frames_in_sample;
         if (now_us - sample_start_us >= 1000000ULL) {
@@ -168,7 +169,7 @@ int main(void) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glLoadIdentity();
         glTranslatef(0.0f, 0.0f, -4.2f);
-        glRotatef(rotation * 57.29578f, 0.8f, 1.0f, 0.35f);
+        glRotatef(rotation, 0.8f, 1.0f, 0.35f);
         draw_cube();
         draw_hud(fps, frame_ms);
         vglSwapBuffers(GL_FALSE);
