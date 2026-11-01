@@ -14,6 +14,8 @@ These notes are an original summary and project interpretation, not a reproducti
 
 Bungie began the Halo engine, code-named **Blam!**, in 1997. Chris Butcher described it as the foundation for roughly a decade of Bungie games and projects, including Halo, Halo 2, Halo 3, Halo 3: ODST and Halo: Reach.
 
+The GDC talk explicitly names Halo, Halo 2, Halo 3, Halo 3: ODST and Halo: Reach as part of this roughly decade-long lineage. It also mentions Bungie's internal **Phoenix** and **Gypsum** game explorations, which used Blam! technology but were never released. ODST is a useful example of iterating on the Halo 3 engine rather than building a new one. Reach is a more significant transition: still a Blam!-lineage game, but also a proving ground for selected new foundation and job-system technology on the path to Tiger. See the dedicated [Blam! Engine Lineage](BLAM_ENGINE_LINEAGE.md) timeline for related projects, later descendants and titles that must be kept separate (such as Halo Wars and its Phoenix engine).
+
 By 2008, Blam! was becoming difficult to evolve. Butcher stressed that the main problem was not simply bad code or code rot. The engine's original assumptions had become restrictive:
 
 - A single main thread for most game and engine work.
