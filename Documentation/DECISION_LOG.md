@@ -32,3 +32,15 @@ This log records decisions that affect the engine's foundations. Decisions can b
 **Reason:** They share the main CPU/GPU/memory architecture but differ in display technology and other hardware details. Independent runs guard against accidental assumptions about display, firmware, or device-specific behaviour.
 
 **Validation:** Keep separate result rows and capture at least one successful launch/render/exit cycle on each model.
+
+## D-004 — Treat native GXM as a first-class backend research path
+
+**Status:** Accepted for investigation; performance advantage remains unproven by our own tests.
+
+**Evidence:** The [Godot 4 PS Vita port by WolffsRoom](https://github.com/WolffsRoom/godot4-psvita) documents a native GXM 2D renderer and an experimental native GXM 3D renderer. Its README describes batching, GPU resource pools, CPU/GPU overlap and several real-hardware game validations, including a reported playable 3D port around 30 FPS.
+
+**Interpretation:** This is strong evidence that substantial direct-GXM rendering is practical on Vita and that low-level control enables important optimizations. It is not a controlled head-to-head benchmark proving direct GXM is always faster than vitaGL. The upstream project's separate Deltarune release notes also describe its GXM backend as experimental and retain vitaGL as the recommended default because feature/performance parity is incomplete.
+
+**Decision:** Continue building our own direct-GXM path. Study the public techniques, but implement our own renderer and verify licensing before incorporating any upstream code.
+
+**Required validation:** Render the same First Light scene with both backends on the same physical Vita, with identical settings and repeated runs. Record CPU frame time, GPU time where measurable, frame-time distribution, memory, draw calls and visual parity. Until then, any performance advantage is a hypothesis, not a result.
