@@ -44,3 +44,18 @@ This log records decisions that affect the engine's foundations. Decisions can b
 **Decision:** Continue building our own direct-GXM path. Study the public techniques, but implement our own renderer and verify licensing before incorporating any upstream code.
 
 **Required validation:** Render the same First Light scene with both backends on the same physical Vita, with identical settings and repeated runs. Record CPU frame time, GPU time where measurable, frame-time distribution, memory, draw calls and visual parity. Until then, any performance advantage is a hypothesis, not a result.
+
+
+## D-005 — Evaluate VkVita as a Vulkan-style abstraction candidate
+
+**Status:** Accepted for research only; not adopted as a dependency.
+
+**Evidence:** [DrDecki/vkvita](https://github.com/DrDecki/vkvita) describes a static library implementing a large subset of Vulkan 1.0-style `vk*` calls and mapping them to SceGxm. Its README documents SPIR-V-to-Cg translation, shader tooling, samples, profiling and configurable runtime behaviour. It also documents important limits, including no compute support, one colour attachment per subpass and a fixed 960×544 swapchain.
+
+**Reason:** A Vulkan-style interface may help us share renderer code across Vita and desktop platforms. It offers a potential middle ground between vitaGL and a fully direct SceGxm renderer.
+
+**Risks:** It is experimental and has no formal releases; its `main` branch is described as the current build. Runtime shader compilation has vitaShaRK / `libshacccg.suprx` prerequisites unless precompiled GXP shaders are used. VkVita is GPL-3.0-or-later, so linking or distribution needs a deliberate license review. API coverage and performance are not yet independently verified by this project.
+
+**Decision:** Add it to the research library and roadmap as a candidate, but do not vendor, link or make it the default backend yet. Keep our engine interfaces backend-neutral.
+
+**Required validation:** Pin an upstream commit, build its samples, port the same First Light scene and benchmark it against vitaGL and direct GXM on the same physical Vita. Measure steady-state CPU frame time, FPS distribution, memory, shader startup/cache behaviour and feature gaps. A Vulkan-shaped API does not by itself imply Vulkan hardware support or better performance.
