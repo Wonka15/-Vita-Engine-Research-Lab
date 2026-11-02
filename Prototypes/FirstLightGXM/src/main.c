@@ -15,7 +15,6 @@
 #include <psp2/types.h>
 #include <psp2/kernel/processmgr.h>
 #include <psp2/kernel/sysmem.h>
-#include <psp2/kernel/cpu.h>
 #include <psp2/display.h>
 #include <psp2/gxm.h>
 #include <psp2/ctrl.h>
@@ -96,8 +95,6 @@ static int graphics_init(void)
         result = create_buffer(&buffers[i]);
         if (result < 0) return result;
         memset(buffers[i].data, 0, 4 * DISPLAY_STRIDE * DISPLAY_HEIGHT);
-        sceKernelCpuDcacheWritebackRange(
-            buffers[i].data, 4 * DISPLAY_STRIDE * DISPLAY_HEIGHT);
     }
     return 0;
 }
@@ -115,9 +112,7 @@ static void draw_test_pattern(DisplayBuffer *buffer, unsigned int frame)
                 ((uint32_t)g << 8) | b;
         }
     }
-    /* Make CPU writes visible before the display controller reads CDRAM. */
-    sceKernelCpuDcacheWritebackRange(
-        buffer->data, 4 * DISPLAY_STRIDE * DISPLAY_HEIGHT);
+    /* Match the VitaSDK sample's direct CDRAM framebuffer update path. */
 }
 
 static void present_frame(void)
