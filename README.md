@@ -40,6 +40,7 @@ The first prototype is [First Light](Prototypes/FirstLight/README.md): an origin
 - [Roadmap](Documentation/ROADMAP.md) — milestone acceptance criteria.
 - [Decision log](Documentation/DECISION_LOG.md) — why vitaGL is used first and how direct GXM will be compared.
 - [Godot 4 Vita GXM field study](Documentation/GXM_FIELD_STUDY.md) — research evidence from WolffsRoom's native GXM engine port.
+- [VkVita field study](Documentation/VKVITA_FIELD_STUDY.md) — Vulkan-style API mapped to SceGxm; portability, limitations, prerequisites and GPL-3.0-or-later review.
 - [Benchmark scene](Tests/SCENES/FIRST_LIGHT.md) and [results template](Tests/RESULTS_TEMPLATE.md).
 
 ## Hardware targets
@@ -63,7 +64,7 @@ Both use the Vita's quad-core Cortex-A9 / SGX543MP4+ platform and 512 MB main RA
 
 ## Backend direction
 
-The first mesh uses [vitaGL](https://github.com/Rinnegatamante/vitaGL), an OpenGL subset translated to the Vita's SceGxm GPU. A direct GXM backend is now an active research path. The [Godot 4 PS Vita port by WolffsRoom](https://github.com/WolffsRoom/godot4-psvita) demonstrates a substantial native GXM 2D renderer and experimental 3D renderer, with reported physical-hardware results. This supports studying direct GXM seriously, but does not prove a universal speed advantage over vitaGL; our own controlled comparison remains necessary. See the [decision log](Documentation/DECISION_LOG.md) for the fair-test criteria and third-party dependency caveats.
+The first mesh uses [vitaGL](https://github.com/Rinnegatamante/vitaGL), an OpenGL subset translated to the Vita's SceGxm GPU. A direct GXM backend is now an active research path. [VkVita](https://github.com/DrDecki/vkvita) adds a third candidate: a Vulkan 1.0-style static library mapped to SceGxm. It may help a cross-platform Vulkan-oriented renderer, but is experimental, has documented Vulkan feature limits and is GPL-3.0-or-later. We have added it as a study reference, not adopted it as a dependency. The [Godot 4 PS Vita port by WolffsRoom](https://github.com/WolffsRoom/godot4-psvita) demonstrates a substantial native GXM 2D renderer and experimental 3D renderer, with reported physical-hardware results. This supports studying direct GXM seriously, but does not prove a universal speed advantage over vitaGL; our own controlled comparison remains necessary. See the [decision log](Documentation/DECISION_LOG.md) for the fair-test criteria and third-party dependency caveats.
 
 ## Research library
 
