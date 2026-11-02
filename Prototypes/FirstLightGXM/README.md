@@ -25,6 +25,10 @@ Press **START** to exit.
 
 The framebuffer, GXM color-surface, sync-object and display-queue sequence is adapted from the public VitaSDK `samples/ime/src/main.c` sample. No Sony firmware files, proprietary assets, or third-party rendering library are bundled.
 
-## Validation
+## Current validation status
+
+The Direct GXM target currently remains a framebuffer/display bring-up, not a matching 3D cube renderer. The first CI attempt failed during compilation on an unavailable cache-maintenance API declaration; the source has been corrected, but that correction still needs a fresh CI build. No Direct GXM VPK from that failed run was uploaded. No physical Vita or Vita3K runtime test has been recorded.
+
+See [Backend Benchmark Results](../../Documentation/BACKEND_BENCHMARK_RESULTS.md) for the build log, evidence boundaries and the fair-comparison protocol.
 
 A successful CI build proves compilation and VPK packaging only. Test on a homebrew-enabled physical Vita before treating runtime behavior as confirmed. Record model, firmware and environment.
