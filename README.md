@@ -32,7 +32,7 @@ The first prototype is [First Light](Prototypes/FirstLight/README.md): an origin
 
 ## Start here
 
-- [Browser Graphics Lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/browser-lab.html) — interactive browser visualization of the First Light cube.
+- [Browser Graphics Lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/browser-lab.html) — interactive browser visualization of the First Light cube.\n- [NV2A Shader Translation Lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/shader-lab.html) — interactive study of Xbox vertex instructions, pixel combiners, texture stages and the D3D8-to-GXM pipeline.
 - [Getting Started](Documentation/GETTING_STARTED.md) — VitaSDK setup on Windows/WSL2, build and install steps.
 - [First Light prototype](Prototypes/FirstLight/README.md) — source, dependency notes and build instructions.
 - [Contributing](CONTRIBUTING.md) — how to help and what a hardware report must include.
@@ -66,7 +66,7 @@ The first mesh uses [vitaGL](https://github.com/Rinnegatamante/vitaGL), an OpenG
 
 ## Research library
 
-The [technical reference library](https://wonka15.github.io/-Vita-Engine-Research-Lab/references.html) collects Vita graphics APIs, commercial game studies, open-source projects, engine lineage, performance architecture and licensing notes. The [browser graphics lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/browser-lab.html) is a separate desktop/browser sandbox—not a Vita emulator or hardware benchmark.
+The [technical reference library](https://wonka15.github.io/-Vita-Engine-Research-Lab/references.html) collects Vita graphics APIs, commercial game studies, open-source projects, engine lineage, performance architecture and licensing notes. The [browser graphics lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/browser-lab.html) is a separate desktop/browser sandbox—not a Vita emulator or hardware benchmark. The [NV2A Shader Translation Lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/shader-lab.html) provides a focused interactive investigation area for the Xbox-to-Vita shader translation concepts.
 
 ## License and independence
 
