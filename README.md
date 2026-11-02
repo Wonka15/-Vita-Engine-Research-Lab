@@ -32,7 +32,8 @@ The first prototype is [First Light](Prototypes/FirstLight/README.md): an origin
 
 ## Start here
 
-- [Browser Graphics Lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/browser-lab.html) — interactive browser visualization of the First Light cube.\n- [NV2A Shader Translation Lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/shader-lab.html) — interactive study of Xbox vertex instructions, pixel combiners, texture stages and the D3D8-to-GXM pipeline.
+- [Browser Graphics Lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/browser-lab.html) — interactive browser visualization of the First Light cube.
+- [NV2A Shader Translation Lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/shader-lab.html) — interactive study of Xbox vertex instructions, pixel combiners, texture stages and the D3D8-to-GXM pipeline.
 - [Getting Started](Documentation/GETTING_STARTED.md) — VitaSDK setup on Windows/WSL2, build and install steps.
 - [First Light prototype](Prototypes/FirstLight/README.md) — source, dependency notes and build instructions.
 - [Contributing](CONTRIBUTING.md) — how to help and what a hardware report must include.
