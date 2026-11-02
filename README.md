@@ -4,13 +4,27 @@
 
 The goal is to build original, reusable rendering technology and prove it on physical PS Vita consoles. The engine is game-agnostic; commercial games are research references only.
 
+## Download First Light Alpha
+
+**Want to try it on a PS Vita?** The latest confirmed successful Alpha package is available from GitHub Actions:
+
+**[Download First Light Alpha 0.1.0 (VPK inside ZIP)](https://github.com/Wonka15/-Vita-Engine-Research-Lab/actions/runs/41366347176)**
+
+1. Open the successful build run above.
+2. Scroll to **Artifacts** near the bottom of the page.
+3. Download **Vita-Engine-First-Light-Alpha-0.1.0**.
+4. Extract the ZIP to find the `.vpk` installer.
+5. Install it using VitaShell on a homebrew-enabled PS Vita.
+
+The Actions artifact is temporary and currently expires **2 December 2026**. This is a build-tested package, not yet verified on a physical Vita. The newer benchmark HUD polish is being rebuilt separately; check the [latest build status](https://github.com/Wonka15/-Vita-Engine-Research-Lab/actions/workflows/vita-build.yml) for updates.
+
 ## Current status — M0 First Light
 
-**Stage:** Native Vita prototype source added; build and physical-hardware verification pending.
+**Stage:** First Light Alpha VPK successfully built by GitHub Actions; physical-hardware verification pending.
 
 The first prototype is [First Light](Prototypes/FirstLight/README.md): an original rotating cube rendered in a native Vita homebrew application, with an FPS and last-frame-time overlay. It uses vitaGL as a GXM-backed bootstrap path; it is not yet a direct-SceGxm renderer.
 
-**Next proof:** build the VPK, launch it on a physical PCH-1000 (original OLED) and PCH-2000 (Slim LCD), and publish separate results. No hardware-success claim is made until each model has been tested.
+**Next proof:** install and launch the VPK on a physical PCH-1000 (original OLED) and PCH-2000 (Slim LCD), then publish separate results. No hardware-success claim is made until each model has been tested.
 
 ## Start here
 
