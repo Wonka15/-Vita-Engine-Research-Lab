@@ -5,11 +5,13 @@ on:
     branches: [main]
     paths:
       - "Prototypes/FirstLight/**"
+      - "Prototypes/FirstLightGXM/**"
       - "Documentation/GETTING_STARTED.md"
       - ".github/workflows/vita-build.yml"
   pull_request:
     paths:
       - "Prototypes/FirstLight/**"
+      - "Prototypes/FirstLightGXM/**"
       - ".github/workflows/vita-build.yml"
   workflow_dispatch:
 
@@ -41,6 +43,8 @@ jobs:
               cmake --build /tmp/first-light-build --parallel
               test -s /tmp/first-light-build/first_light.vpk
               cp /tmp/first-light-build/first_light.vpk /workspace/dist/Vita-Engine-First-Light-Alpha-0.1.0.vpk
+              make -C /workspace/Prototypes/FirstLightGXM clean all
+              cp /workspace/Prototypes/FirstLightGXM/first_light_gxm.vpk /workspace/dist/Vita-Engine-First-Light-Direct-GXM-Bringup-0.1.0.vpk
             '
 
       - name: Upload Alpha VPK build artifact
@@ -48,6 +52,14 @@ jobs:
         with:
           name: Vita-Engine-First-Light-Alpha-0.1.0
           path: dist/Vita-Engine-First-Light-Alpha-0.1.0.vpk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload Direct GXM bring-up VPK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Vita-Engine-First-Light-Direct-GXM-Bringup-0.1.0
+          path: dist/Vita-Engine-First-Light-Direct-GXM-Bringup-0.1.0.vpk
           if-no-files-found: error
           retention-days: 30
 
