@@ -4,6 +4,10 @@
 
 The goal is to build original, reusable rendering technology and prove it on physical PS Vita consoles. The engine is game-agnostic; commercial games are research references only.
 
+<p align="center"><a href="https://wonka15.github.io/-Vita-Engine-Research-Lab/browser-lab.html"><strong>▶ OPEN THE BROWSER GRAPHICS LAB</strong></a></p>
+
+Explore the rotating First Light 3D cube, adjust its camera and rotation, and watch live browser FPS/frame-time measurements. This is a visual reference—not a Vita emulator or a substitute for physical-hardware benchmarks.
+
 ## Download First Light Alpha
 
 **Want to try it on a PS Vita?** The latest confirmed successful Alpha package is available from GitHub Actions:
@@ -28,6 +32,7 @@ The first prototype is [First Light](Prototypes/FirstLight/README.md): an origin
 
 ## Start here
 
+- [Browser Graphics Lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/browser-lab.html) — interactive browser visualization of the First Light cube.
 - [Getting Started](Documentation/GETTING_STARTED.md) — VitaSDK setup on Windows/WSL2, build and install steps.
 - [First Light prototype](Prototypes/FirstLight/README.md) — source, dependency notes and build instructions.
 - [Contributing](CONTRIBUTING.md) — how to help and what a hardware report must include.
@@ -57,7 +62,7 @@ Both use the Vita's quad-core Cortex-A9 / SGX543MP4+ platform and 512 MB main RA
 
 ## Backend direction
 
-The first mesh uses [vitaGL](https://github.com/Rinnegatamante/vitaGL), an OpenGL subset translated to SceGxm. A direct GXM backend is now an active research path. The [Godot 4 PS Vita port by WolffsRoom](https://github.com/WolffsRoom/godot4-psvita) demonstrates a substantial native GXM 2D renderer and experimental 3D renderer, with reported physical-hardware results. This supports studying direct GXM seriously, but does not prove a universal speed advantage over vitaGL; our own controlled comparison remains necessary. See the [decision log](Documentation/DECISION_LOG.md) for the fair-test criteria and third-party dependency caveats.
+The first mesh uses [vitaGL](https://github.com/Rinnegatamante/vitaGL), an OpenGL subset translated to the Vita's SceGxm GPU. A direct GXM backend is now an active research path. The [Godot 4 PS Vita port by WolffsRoom](https://github.com/WolffsRoom/godot4-psvita) demonstrates a substantial native GXM 2D renderer and experimental 3D renderer, with reported physical-hardware results. This supports studying direct GXM seriously, but does not prove a universal speed advantage over vitaGL; our own controlled comparison remains necessary. See the [decision log](Documentation/DECISION_LOG.md) for the fair-test criteria and third-party dependency caveats.
 
 ## Research library
 
