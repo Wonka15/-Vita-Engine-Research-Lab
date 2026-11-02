@@ -17,7 +17,7 @@ A milestone is complete only when its acceptance evidence exists. A source file 
 
 ## M1 — Backend comparison and renderer foundation
 
-**New research input:** [Godot 4 PS Vita native GXM field study](GXM_FIELD_STUDY.md). This independently demonstrates a substantial native GXM 2D renderer and experimental 3D renderer, including reported physical-hardware results. It strengthens the case for direct-GXM research but does not replace our own controlled vitaGL-vs-GXM benchmark.
+**New research inputs:** [Godot 4 PS Vita native GXM field study](GXM_FIELD_STUDY.md) and [VkVita Vulkan-style API field study](VKVITA_FIELD_STUDY.md). VkVita maps a Vulkan 1.0-style subset to SceGxm and could be a useful portability layer for a cross-platform renderer. Its feature coverage, GPL-3.0-or-later license and real-hardware performance must be evaluated before adoption. This independently demonstrates a substantial native GXM 2D renderer and experimental 3D renderer, including reported physical-hardware results. It strengthens the case for direct-GXM research but does not replace our own controlled vitaGL-vs-GXM benchmark.
 
 - [ ] Keep the same First Light scene as the comparison workload.
 - [ ] Build a direct-SceGxm proof of concept.
