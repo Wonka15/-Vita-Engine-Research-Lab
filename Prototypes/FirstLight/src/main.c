@@ -11,6 +11,7 @@
 #include <psp2/kernel/processmgr.h>
 #include <psp2/kernel/threadmgr.h>
 #include <stdint.h>
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -93,6 +94,33 @@ static void draw_cube(void) {
     glEnd();
 }
 
+static void draw_benchmark_icon(float cx, float cy) {
+    /* Compact speedometer mark: a clear benchmark identity at HUD scale. */
+    const float radius = 13.0f;
+    glColor4f(0.28f, 0.82f, 1.0f, 1.0f);
+    glBegin(GL_LINE_STRIP);
+    for (int i = 0; i <= 24; ++i) {
+        float angle = 3.14159265f + (3.14159265f * (float)i / 24.0f);
+        glVertex2f(cx + cosf(angle) * radius, cy + sinf(angle) * radius);
+    }
+    glEnd();
+
+    glBegin(GL_LINES);
+    for (int i = 0; i <= 4; ++i) {
+        float angle = 3.14159265f + (3.14159265f * (float)i / 4.0f);
+        glVertex2f(cx + cosf(angle) * 9.0f, cy + sinf(angle) * 9.0f);
+        glVertex2f(cx + cosf(angle) * 12.0f, cy + sinf(angle) * 12.0f);
+    }
+    glVertex2f(cx, cy);
+    glVertex2f(cx + 8.0f, cy - 7.0f);
+    glEnd();
+
+    glPointSize(3.0f);
+    glBegin(GL_POINTS);
+    glVertex2f(cx, cy);
+    glEnd();
+}
+
 static void draw_hud(float fps, float frame_ms) {
     char line[48];
     snprintf(line, sizeof(line), "FPS:%.1f MS:%.2f", fps, frame_ms);
@@ -114,7 +142,8 @@ static void draw_hud(float fps, float frame_ms) {
     glEnd();
 
     glColor3f(0.78f, 0.92f, 1.0f);
-    draw_text(30, 31, line, 4.0f);
+    draw_benchmark_icon(49.0f, 53.0f);
+    draw_text(82, 31, line, 4.0f);
 
     glPopMatrix();
     glMatrixMode(GL_PROJECTION);
