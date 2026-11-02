@@ -1,7 +1,7 @@
 # First Light — native Vita graphics prototype
 
 **Target:** PlayStation Vita PCH-1000 (original/Fat) and PCH-2000 (Slim)  
-**Status:** Source prototype added; build and physical-device verification are still pending.
+**Status:** Alpha build workflow configured; first automated VPK build and physical-device verification are pending.
 
 This is the first native graphics milestone. It draws an original rotating cube using vitaGL, which translates a supported OpenGL subset to the Vita's SceGxm GPU interface. It is a native Vita homebrew application, not a browser demo or emulator.
 
@@ -39,7 +39,7 @@ cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE="$VITASDK/share/vita.toolchain.cmake"
 cmake --build build --parallel
 ```
 
-Expected output: `build/first_light.vpk`. A legacy Makefile is also included, but CMake is the documented primary path.
+Expected output: `build/first_light.vpk`. The GitHub Actions workflow also builds the package and retains it as a 30-day workflow artifact when the build succeeds. The artifact is a test build, not yet a public release.
 
 If the linker cannot find `-lvitaGL`, confirm vitaGL was installed into the active VitaSDK prefix and that the SDK and vitaGL were built for the same toolchain.
 
