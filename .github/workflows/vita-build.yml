@@ -27,6 +27,7 @@ jobs:
       - name: Build vitaGL and First Light with VitaSDK
         shell: bash
         run: |
+          mkdir -p dist
           docker run --rm \
             -v "$GITHUB_WORKSPACE:/workspace" \
             -w /workspace \
@@ -38,5 +39,22 @@ jobs:
                 -B /tmp/first-light-build \
                 -DCMAKE_TOOLCHAIN_FILE="$VITASDK/share/vita.toolchain.cmake"
               cmake --build /tmp/first-light-build --parallel
-              test -f /tmp/first-light-build/first_light.vpk
+              test -s /tmp/first-light-build/first_light.vpk
+              cp /tmp/first-light-build/first_light.vpk /workspace/dist/Vita-Engine-First-Light-Alpha-0.1.0.vpk
             '
+
+      - name: Upload Alpha VPK build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Vita-Engine-First-Light-Alpha-0.1.0
+          path: dist/Vita-Engine-First-Light-Alpha-0.1.0.vpk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Build summary
+        if: success()
+        run: |
+          echo "## First Light Alpha build succeeded" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Package: `Vita-Engine-First-Light-Alpha-0.1.0.vpk`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- This confirms packaging only; it does not prove emulator or physical Vita compatibility." >> "$GITHUB_STEP_SUMMARY"
+          echo "- Review third-party vitaGL LGPL-3.0 distribution obligations before publishing a public release asset." >> "$GITHUB_STEP_SUMMARY"
