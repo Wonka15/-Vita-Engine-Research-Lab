@@ -1,0 +1,11 @@
+title: "Vita Engine Research Lab"
+description: "An open-source, hardware-first 3D graphics engine research project for PlayStation Vita. Explore native rendering prototypes, reproducible benchmarks, and real-console testing."
+url: "https://wonka15.github.io"
+baseurl: "/Vita-Engine-Research-Lab"
+lang: en
+markdown: kramdown
+plugins: []
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
