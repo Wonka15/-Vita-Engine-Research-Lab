@@ -94,6 +94,29 @@ static void draw_cube(void) {
     glEnd();
 }
 
+static void draw_rounded_panel(float x, float y, float w, float h, float radius) {
+    const float pi = 3.14159265f;
+    const float centers[4][2] = {
+        {x + radius, y + radius},
+        {x + w - radius, y + radius},
+        {x + w - radius, y + h - radius},
+        {x + radius, y + h - radius}
+    };
+    const float starts[4] = {pi, 1.5f * pi, 0.0f, 0.5f * pi};
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(x + w * 0.5f, y + h * 0.5f);
+    for (int corner = 0; corner < 4; ++corner) {
+        for (int step = 0; step <= 6; ++step) {
+            float angle = starts[corner] + (0.5f * pi * (float)step / 6.0f);
+            glVertex2f(centers[corner][0] + cosf(angle) * radius,
+                       centers[corner][1] + sinf(angle) * radius);
+        }
+    }
+    glVertex2f(centers[0][0] - radius, centers[0][1]);
+    glEnd();
+}
+
 static void draw_benchmark_icon(float cx, float cy) {
     /* Compact speedometer mark: a clear benchmark identity at HUD scale. */
     const float radius = 13.0f;
@@ -136,10 +159,7 @@ static void draw_hud(float fps, float frame_ms) {
 
     /* Dark translucent HUD plate. */
     glColor4f(0.015f, 0.035f, 0.065f, 0.88f);
-    glBegin(GL_QUADS);
-    glVertex2f(18, 18); glVertex2f(470, 18);
-    glVertex2f(470, 76); glVertex2f(18, 76);
-    glEnd();
+    draw_rounded_panel(18.0f, 18.0f, 452.0f, 58.0f, 12.0f);
 
     glColor3f(0.78f, 0.92f, 1.0f);
     draw_benchmark_icon(49.0f, 53.0f);
