@@ -1,7 +1,7 @@
 # First Light — native Vita graphics prototype
 
 **Target:** PlayStation Vita PCH-1000 (original/Fat) and PCH-2000 (Slim)  
-**Status:** Alpha build workflow configured; first automated VPK build and physical-device verification are pending.
+**Status:** Alpha VPK build has succeeded in CI; the latest HUD/source polish is being rebuilt. Physical-device verification is still pending.
 
 This is the first native graphics milestone. It draws an original rotating cube using vitaGL, which translates a supported OpenGL subset to the Vita's SceGxm GPU interface. It is a native Vita homebrew application, not a browser demo or emulator.
 
@@ -15,7 +15,9 @@ This is a bootstrap choice, not a final backend decision. The decision log defin
 
 - A rotating indexed-style cube mesh (six independently coloured faces).
 - Depth testing and perspective projection.
-- An on-screen FPS and last-frame-time readout.
+- A rounded benchmark badge with a cyan speedometer icon.
+- Live FPS and most-recent-frame-time readout.
+- Beginner-friendly source comments, section labels, and consistent formatting.
 - Start button exits the application.
 - The same build should run on PCH-1000 and PCH-2000; record each device separately.
 
