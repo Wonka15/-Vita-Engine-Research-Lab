@@ -46,7 +46,7 @@ The first mesh uses [vitaGL](https://github.com/Rinnegatamante/vitaGL), an OpenG
 
 ## Research library
 
-The [technical reference library](https://wonka15.github.io/Vita-Engine-Research-Lab/references.html) collects Vita graphics APIs, commercial game studies, open-source projects, engine lineage, performance architecture and licensing notes. The [browser graphics lab](https://wonka15.github.io/Vita-Engine-Research-Lab/browser-lab.html) is a separate desktop/browser sandbox—not a Vita emulator or hardware benchmark.
+The [technical reference library](https://wonka15.github.io/-Vita-Engine-Research-Lab/references.html) collects Vita graphics APIs, commercial game studies, open-source projects, engine lineage, performance architecture and licensing notes. The [browser graphics lab](https://wonka15.github.io/-Vita-Engine-Research-Lab/browser-lab.html) is a separate desktop/browser sandbox—not a Vita emulator or hardware benchmark.
 
 ## License and independence
 
