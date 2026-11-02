@@ -38,9 +38,9 @@ When testing on a Vita, include:
 
 Start with the open issues labelled `good first issue`:
 
-- [Test First Light on PCH-1000](https://github.com/Wonka15/Vita-Engine-Research-Lab/issues/1)
-- [Test First Light on PCH-2000](https://github.com/Wonka15/Vita-Engine-Research-Lab/issues/2)
-- [Prototype a direct GXM comparison](https://github.com/Wonka15/Vita-Engine-Research-Lab/issues/3)
-- [Add main RAM / VRAM diagnostics](https://github.com/Wonka15/Vita-Engine-Research-Lab/issues/4)
+- [Test First Light on PCH-1000](https://github.com/Wonka15/-Vita-Engine-Research-Lab/issues/1)
+- [Test First Light on PCH-2000](https://github.com/Wonka15/-Vita-Engine-Research-Lab/issues/2)
+- [Prototype a direct GXM comparison](https://github.com/Wonka15/-Vita-Engine-Research-Lab/issues/3)
+- [Add main RAM / VRAM diagnostics](https://github.com/Wonka15/-Vita-Engine-Research-Lab/issues/4)
 
 More good-first tasks can be added as the hardware baseline becomes stable.
