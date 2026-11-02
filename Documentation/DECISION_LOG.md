@@ -46,6 +46,22 @@ This log records decisions that affect the engine's foundations. Decisions can b
 **Required validation:** Render the same First Light scene with both backends on the same physical Vita, with identical settings and repeated runs. Record CPU frame time, GPU time where measurable, frame-time distribution, memory, draw calls and visual parity. Until then, any performance advantage is a hypothesis, not a result.
 
 
+## D-006 — Study vkQuake2 Vita as a complete VkVita application reference
+
+**Status:** Accepted for research only; not adopted as an engine dependency.
+
+**Evidence:** [DrDecki/vkquake2-vita](https://github.com/DrDecki/vkquake2-vita) documents a Vita port of the vkQuake2 Vulkan renderer. Its README says the port uses the Vulkan renderer and SPIR-V shaders through VkVita, which maps the API to SceGxm and translates shaders to Cg. It describes precompiled shaders packaged in the VPK, the full single-player campaign, Wi-Fi multiplayer, audio, 2× MSAA by default and a reported 60 FPS in most areas.
+
+**Interpretation:** This is a valuable end-to-end example of a Vulkan-oriented renderer running on Vita through an API translation layer. It demonstrates an application integration and shader packaging approach, not native Vulkan driver support. The reported frame rate is an upstream claim, not a controlled measurement by this lab.
+
+**Risks:** The port is GPL-2.0-or-later and based on the GPL-licensed vkQuake2 codebase. Quake II game data is not included and must not be copied into our repository. Review exact revisions, dependencies and notices before any code reuse or redistribution.
+
+**Decision:** Add the project as an application-level research reference. Do not vendor its game code, assets or binaries, and do not make it an engine dependency. Study the platform boundary, shader preparation/package workflow, host mock and input/network integration; implement our own engine and benchmark scene.
+
+**Required validation:** Reproduce the build, smoke-test in Vita3K, then validate on physical Vita hardware. Record device, firmware, resolution, MSAA, scene, sustained frame-time distribution and 1% lows. Compare an original First Light scene across vitaGL, VkVita and direct GXM under identical conditions before making backend performance claims.
+
+---
+
 ## D-005 — Evaluate VkVita as a Vulkan-style abstraction candidate
 
 **Status:** Accepted for research only; not adopted as a dependency.
